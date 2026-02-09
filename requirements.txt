@@ -1,0 +1,16 @@
+# DeepReason AI Agent Dependencies
+# Install with: pip install -r requirements.txt
+
+# Core LangGraph and LangChain dependencies
+langgraph>=0.0.40
+langchain>=0.1.0
+langchain-openai>=0.1.0
+
+# Search API client
+tavily-python>=0.3.0
+
+# Environment configuration
+python-dotenv>=1.0.0
+
+# Additional utilities
+typing-extensions>=4.5.0
