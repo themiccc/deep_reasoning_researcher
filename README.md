@@ -2,7 +2,7 @@
 
 An autonomous research engine powered by LangGraph, LangChain, and Tavily that transforms user queries into comprehensive research reports.
 
-## 🧠 Features
+## Features
 
 - **Autonomous Research Planning**: Breaks down complex queries into targeted search tasks
 - **Multi-Source Research**: Executes searches using Tavily API for comprehensive data collection
@@ -11,7 +11,7 @@ An autonomous research engine powered by LangGraph, LangChain, and Tavily that t
 - **Professional Reports**: AI-generated comprehensive reports with citations
 - **Robust Error Handling**: Graceful fallbacks for API failures and edge cases
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Language**: Python 3.9+
 - **Orchestration**: LangGraph (StateGraph)
@@ -80,7 +80,7 @@ The DeepReason agent follows a sophisticated 4-stage workflow:
 - Generates professional, well-structured reports
 - Includes citations and references
 
-## 🔄 Conditional Logic Flow
+## Conditional Logic Flow
 
 ```
 planner → researcher → critic ──┐
@@ -111,7 +111,7 @@ The conditional edge after the critic node implements intelligent decision-makin
 🔍 Research Query: How do transformer architectures work in natural language processing?
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 ### Environment Variables
 - `OPENAI_API_KEY`: Required for GPT-4o-mini access
@@ -122,7 +122,7 @@ The conditional edge after the critic node implements intelligent decision-makin
 - `temperature`: 0.7 (balanced creativity/reliability)
 - `search_depth`: "basic" (Tavily search configuration)
 
-## 🛡️ Error Handling
+## Error Handling
 
 The agent includes comprehensive error handling:
 - **API Failures**: Graceful fallbacks and retry logic
@@ -153,4 +153,4 @@ Modify the `AgentState` in `state.py` to add custom fields or adjust the workflo
 
 ---
 
-**Built with ❤️ using LangGraph - The future of autonomous AI agents**
+**Built with using LangGraph - The future of autonomous AI agents**
