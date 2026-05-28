@@ -36,11 +36,11 @@ def should_continue_research(state: AgentState) -> str:
     
     # If we have original plan (3 items) and no revisions, proceed
     if state["revision_number"] == 0:
-        print("✅ Initial research complete - proceeding to write report")
+        print(" Initial research complete - proceeding to write report")
         return "writer"
     
     # Default to writer
-    print("✅ Research complete - proceeding to write report")
+    print(" Research complete - proceeding to write report")
     return "writer"
 
 
@@ -85,8 +85,8 @@ def create_research_graph() -> StateGraph:
     # Compile the graph
     app = workflow.compile()
     
-    print("✅ Research Graph compiled successfully")
-    print("📊 Graph Structure:")
+    print("Research Graph compiled successfully")
+    print("   Graph Structure:")
     print("   planner → researcher → critic ──┐")
     print("                ↑                    │")
     print("                └─────(conditional)───┘")
@@ -124,11 +124,11 @@ def run_research(query: str) -> Dict[str, Any]:
     
     try:
         # Execute the workflow
-        print("\n🚀 Executing research workflow...")
+        print("\n Executing research workflow...")
         final_state = app.invoke(initial_state)
         
         print("\n" + "=" * 60)
-        print("🎉 RESEARCH COMPLETE!")
+        print("RESEARCH COMPLETE!")
         print("=" * 60)
         
         return final_state
@@ -145,7 +145,7 @@ def main():
     """
     Main execution function with interactive query input.
     """
-    print("🧠 DeepReason AI Research Agent")
+    print(" DeepReason AI Research Agent")
     print("=" * 40)
     print("Autonomous Research Engine powered by LangGraph")
     print("Enter your research query or 'quit' to exit\n")
@@ -156,11 +156,11 @@ def main():
             query = input("🔍 Research Query: ").strip()
             
             if query.lower() in ['quit', 'exit', 'q']:
-                print("👋 Goodbye!")
+                print(" Goodbye!")
                 break
             
             if not query:
-                print("⚠️ Please enter a valid query")
+                print(" Please enter a valid query")
                 continue
             
             # Run research
@@ -177,10 +177,10 @@ def main():
             print(f"   • Max revisions: {result.get('max_revisions', 2)}")
             
         except KeyboardInterrupt:
-            print("\n👋 Research interrupted. Goodbye!")
+            print("\nResearch interrupted. Goodbye!")
             break
         except Exception as e:
-            print(f"\n❌ Error: {e}")
+            print(f"\n Error: {e}")
             print("Please try again or check your configuration.")
 
 
