@@ -32,7 +32,6 @@ def planner_node(state: AgentState) -> AgentState:
     """
     print("🎯 PLANNER: Breaking down query into search tasks...")
     
-    # Prompt LLM to generate 3 distinct search queries
     planner_prompt = f"""
     You are a research planner. Given the user query below, break it down into 
     exactly 3 distinct, specific Google search queries that will help gather 
