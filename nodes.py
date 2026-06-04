@@ -1,9 +1,3 @@
-"""
-Agent Nodes for DeepReason AI Agent
-
-This module contains the four core agent functions that process
-the state through the research workflow using LangGraph.
-"""
 
 import os
 from typing import Dict, Any
@@ -21,15 +15,7 @@ tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
 
 
 def planner_node(state: AgentState) -> AgentState:
-    """
-    Planner Node: Breaks down user query into 3 distinct search queries.
-    
-    Args:
-        state: Current agent state containing user query
-        
-    Returns:
-        Updated state with search plan
-    """
+  
     print("🎯 PLANNER: Breaking down query into search tasks...")
     
     planner_prompt = f"""
@@ -80,15 +66,7 @@ def planner_node(state: AgentState) -> AgentState:
 
 
 def researcher_node(state: AgentState) -> AgentState:
-    """
-    Researcher Node: Executes search queries and accumulates results.
-    
-    Args:
-        state: Current agent state with search plan
-        
-    Returns:
-        Updated state with accumulated research content
-    """
+   
     print("🔍 RESEARCHER: Executing search queries...")
     
     content = state.get("content", [])
@@ -127,15 +105,7 @@ def researcher_node(state: AgentState) -> AgentState:
 
 
 def critic_node(state: AgentState) -> AgentState:
-    """
-    Critic Node: Quality control step that evaluates research completeness.
-    
-    Args:
-        state: Current agent state with research content
-        
-    Returns:
-        Updated state - either proceeds to writer or generates new search query
-    """
+   
     print("🔎 CRITIC: Evaluating research quality...")
     
     # Combine all content for evaluation
@@ -188,15 +158,7 @@ def critic_node(state: AgentState) -> AgentState:
 
 
 def writer_node(state: AgentState) -> AgentState:
-    """
-    Writer Node: Synthesizes research into a professional final report.
-    
-    Args:
-        state: Current agent state with accumulated research content
-        
-    Returns:
-        Updated state with final research report
-    """
+   
     print("✍️ WRITER: Synthesizing final report...")
     
     # Combine all content for report generation
