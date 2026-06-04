@@ -78,15 +78,7 @@ def create_research_graph() -> StateGraph:
 
 
 def run_research(query: str) -> Dict[str, Any]:
-    """
-    Executes the research workflow for a given query.
-    
-    Args:
-        query: User research query
-        
-    Returns:
-        Final state containing the research report
-    """
+  
     print(f"\n🎯 Starting DeepReason Research for: '{query}'")
     print("=" * 60)
     
