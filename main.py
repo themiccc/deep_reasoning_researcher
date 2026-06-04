@@ -1,9 +1,3 @@
-"""
-Main Entry Point for DeepReason AI Agent
-
-This module defines the LangGraph StateGraph workflow, connects all nodes,
-and implements the conditional logic for the research pipeline.
-"""
 
 from typing import Dict, Any
 from langgraph.graph import StateGraph, END
@@ -12,15 +6,7 @@ from nodes import planner_node, researcher_node, critic_node, writer_node
 
 
 def should_continue_research(state: AgentState) -> str:
-    """
-    Conditional Edge Logic: Determines whether to continue research or proceed to writing.
-    
-    Args:
-        state: Current agent state
-        
-    Returns:
-        "researcher" to continue research loop, "writer" to proceed to final report
-    """
+   
     print(f"🔄 EVALUATING: Revision {state['revision_number']}/{state['max_revisions']}")
     
     # Check if we've exceeded max revisions
@@ -45,12 +31,7 @@ def should_continue_research(state: AgentState) -> str:
 
 
 def create_research_graph() -> StateGraph:
-    """
-    Creates and configures the LangGraph StateGraph for the research workflow.
-    
-    Returns:
-        Compiled StateGraph ready for execution
-    """
+
     print("🚀 Initializing DeepReason Research Graph...")
     
     # Initialize the StateGraph with our AgentState
@@ -142,9 +123,7 @@ def run_research(query: str) -> Dict[str, Any]:
 
 
 def main():
-    """
-    Main execution function with interactive query input.
-    """
+  
     print(" DeepReason AI Research Agent")
     print("=" * 40)
     print("Autonomous Research Engine powered by LangGraph")
