@@ -16,7 +16,7 @@ tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
 
 def planner_node(state: AgentState) -> AgentState:
   
-    print("🎯 PLANNER: Breaking down query into search tasks...")
+    print(" PLANNER: Breaking down query into search tasks...")
     
     planner_prompt = f"""
     You are a research planner. Given the user query below, break it down into 
@@ -38,7 +38,7 @@ def planner_node(state: AgentState) -> AgentState:
             plan.append(f"additional search for {state['query']}")
         plan = plan[:3]  # Limit to exactly 3
         
-        print(f"📋 Generated search plan: {plan}")
+        print(f" Generated search plan: {plan}")
         
         return {
             **state,
@@ -49,7 +49,7 @@ def planner_node(state: AgentState) -> AgentState:
         }
         
     except Exception as e:
-        print(f"❌ Planner error: {e}")
+        print(f" Planner error: {e}")
         # Fallback plan
         fallback_plan = [
             f"What is {state['query']}",
@@ -67,12 +67,12 @@ def planner_node(state: AgentState) -> AgentState:
 
 def researcher_node(state: AgentState) -> AgentState:
    
-    print("🔍 RESEARCHER: Executing search queries...")
+    print(" RESEARCHER: Executing search queries...")
     
     content = state.get("content", [])
     
     for i, query in enumerate(state["plan"]):
-        print(f"🌐 Searching: {query}")
+        print(f" Searching: {query}")
         
         try:
             # Execute search using Tavily
@@ -87,13 +87,13 @@ def researcher_node(state: AgentState) -> AgentState:
                     search_content += f"Content: {result.get('content', 'N/A')[:500]}...\n"
                 
                 content.append(search_content)
-                print(f"✅ Found {len(search_result['results'])} results")
+                print(f" Found {len(search_result['results'])} results")
             else:
                 content.append(f"\n=== SEARCH QUERY {i+1}: {query} ===\nNo results found.")
-                print(f"⚠️ No results found for: {query}")
+                print(f" No results found for: {query}")
                 
         except Exception as e:
-            print(f"❌ Search error for '{query}': {e}")
+            print(f" Search error for '{query}': {e}")
             content.append(f"\n=== SEARCH QUERY {i+1}: {query} ===\nSearch failed: {str(e)}")
     
     print(f"📚 Total content pieces: {len(content)}")
@@ -106,7 +106,7 @@ def researcher_node(state: AgentState) -> AgentState:
 
 def critic_node(state: AgentState) -> AgentState:
    
-    print("🔎 CRITIC: Evaluating research quality...")
+    print(" CRITIC: Evaluating research quality...")
     
     # Combine all content for evaluation
     combined_content = "\n".join(state["content"])
@@ -140,26 +140,26 @@ def critic_node(state: AgentState) -> AgentState:
         print(f"🤖 Critic decision: {decision}")
         
         if decision.upper() == "PROCEED":
-            print("✅ Research approved - proceeding to write final report")
-            return state  # No changes, proceed to writer
+            print(" Research approved - proceeding to write final report")
+            return state  # No chges, prcd to wtr
         else:
-            # Generate new search query and increment revision
-            print(f"🔄 Research insufficient - new query: {decision}")
+            # generate new search query & inc rev
+            print(f" Research insufficient - new query: {decision}")
             return {
                 **state,
-                "plan": [decision],  # New search query
+                "plan": [decision],  # new qr
                 "revision_number": state["revision_number"] + 1
             }
             
     except Exception as e:
-        print(f"❌ Critic error: {e}")
-        print("⚠️ Defaulting to proceed due to critic error")
+        print(f" Critic error: {e}")
+        print(" Defaulting to proceed due to critic error")
         return state  # Default to proceeding on error
 
 
 def writer_node(state: AgentState) -> AgentState:
    
-    print("✍️ WRITER: Synthesizing final report...")
+    print(" WRITER: Synthesizing final report...")
     
     # Combine all content for report generation
     combined_content = "\n".join(state["content"])
@@ -197,7 +197,7 @@ def writer_node(state: AgentState) -> AgentState:
         }
         
     except Exception as e:
-        print(f"❌ Writer error: {e}")
+        print(f" Writer error: {e}")
         # Fallback report
         fallback_report = f"""
         # Research Report: {state['query']}
