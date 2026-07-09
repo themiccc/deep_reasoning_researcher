@@ -10,7 +10,7 @@ from state import AgentState
 load_dotenv()
 
 # Initialize LLM and Search Client
-llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.2)
+llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.8)
 tavily = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
 
 
