@@ -19,7 +19,7 @@ An autonomous research engine powered by LangGraph, LangChain, and Tavily that t
 - **Search Tool**: Tavily API
 - **Configuration**: python-dotenv
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 deep_reason/
@@ -31,7 +31,7 @@ deep_reason/
 └── README.md          # This file
 ```
 
-## 🚀 Setup & Installation
+##  Setup & Installation
 
 1. **Clone and navigate to the project**:
    ```bash
@@ -55,7 +55,7 @@ deep_reason/
    python main.py
    ```
 
-## 🔄 Workflow Architecture
+##  Workflow Architecture
 
 The DeepReason agent follows a sophisticated 4-stage workflow:
 
@@ -94,21 +94,21 @@ The conditional edge after the critic node implements intelligent decision-makin
 - **Continue Research**: If critic rejects and revisions < max_revisions
 - **Proceed to Writing**: If research is complete or max revisions reached
 
-## 🎯 Usage Examples
+##  Usage Examples
 
 ### Basic Research Query
 ```
-🔍 Research Query: What are the latest developments in quantum computing?
+ Research Query: What are the latest developments in quantum computing?
 ```
 
 ### Complex Analysis
 ```
-🔍 Research Query: Compare the economic impacts of renewable energy policies in Europe vs North America
+ Research Query: Compare the economic impacts of renewable energy policies in Europe vs North America
 ```
 
 ### Technical Investigation
 ```
-🔍 Research Query: How do transformer architectures work in natural language processing?
+ Research Query: How do transformer architectures work in natural language processing?
 ```
 
 ## Configuration
@@ -130,7 +130,7 @@ The agent includes comprehensive error handling:
 - **Network Issues**: Timeout handling and error reporting
 - **State Corruption**: Automatic state reset and recovery
 
-## 📊 Research Statistics
+##  Research Statistics
 
 Each research session provides detailed statistics:
 - Total revision cycles
@@ -138,7 +138,7 @@ Each research session provides detailed statistics:
 - Search queries executed
 - Final report length and quality metrics
 
-## 🔧 Advanced Usage
+##  Advanced Usage
 
 ### Programmatic Integration
 ```python
